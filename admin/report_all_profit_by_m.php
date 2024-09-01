@@ -1,0 +1,37 @@
+<?php
+$sql_script = "SELECT DATE_FORMAT(payDate, '%M-%Y') as bookingM,
+SUM(booking_amount) totalbyM 
+FROM tb_booking
+WHERE booking_status > 3
+GROUP BY DATE_FORMAT(payDate, '%Y-%m') DESC
+";
+$result = mysqli_query($Connection, $sql_script) or die (mysqli_error($Connection));
+?>
+<font face="TH Sarabun New" >
+ข้อมูลรายได้ (รวมเฉพาะการจองที่ชำระเงินแล้วเท่านั้น) 
+<a href="report.php?act=profitbyM" class="btnx btn-success btn-sm">+แยกตามเดือน</a> , 
+<a href="report.php?act=profitbyY" class="btnx btn-success btn-sm">+แยกตามปี</a>
+</font>
+<table class="table  table-striped table-bordered table-sm">
+  <thead>
+    <tr class="table-info">
+      <th><font face="TH Sarabun New" >เดือน</font></th>
+      <th><center><font face="TH Sarabun New" ><center>รวม(บาท)</center></font></center></th>
+    </tr>
+  </thead>
+  <tbody>
+    <?php $total=0; foreach ($result as $row_result) {
+    $total += $row_result["totalbyM"];  ?>
+    <tr>
+      <td scope="row"> <font face="TH Sarabun New" ><?php echo $row_result["bookingM"];?></font></td>
+      <td align="right"><font face="TH Sarabun New" ><?php echo number_format($row_result["totalbyM"],2);?></font></td>
+       
+    </tr>
+    <?php } ?>
+    <tr class="table-danger">
+      <td align="center"><font face="TH Sarabun New" > รวมรายได้ทั้งหมด </font></td>
+      <td align="right"><font face="TH Sarabun New" > <?=number_format($total,2);?> บาท </font></td>
+    </tr>
+  </tbody>
+</table>
+ 

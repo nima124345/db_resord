@@ -1,0 +1,18 @@
+1 start xampp : apache & mysql
+2 คัดลอกโฟลเดอร์ resort ไปไว้ใน c:/xampp/htdocs/
+3 นำเข้าฐานข้อมูล (อยู่ในโฟลเดอร์ database/localhost.sql) จะได้ฐานข้อมูลชื่อ db_resort 
+
+คลิปสอน  https://www.youtube.com/watch?v=vnzVjEZxuAc
+
+
+4 ตั้งค่าการเชื่อมต่อฐานข้อมูล ไฟล์ขื่อ  connection.php  เช่น username, password, database  แต่ถ้าติดตั้งบน xampp ไม่ต้องแก้อะไร ใช้ได้เลย
+
+5 เข้าใช้งาน http://localhost/resort/ 
+6 demo :
+	superadmin : username = superadmin , password = superadmin
+  	admin : username = admin , password = admin
+  	พนง. : username = staff , password = staff
+
+  	ส่วนสมาชิก สมัครได้ทีหน้าเว็บ
+
+ 7 ติดปัญหาการใชังานติดต่อได้ที่แฟนเพจ : https://www.facebook.com/sornwebsites 
